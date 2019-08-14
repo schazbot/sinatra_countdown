@@ -18,22 +18,23 @@ class ApplicationController < Sinatra::Base
 
   post "/create" do
     puts params
-    
-    @letter_1 = params[:letter_1]
-    @letter_2 = params[:letter_2]
-    @letter_3 = params[:letter_3]
-    @letter_4 = params[:letter_4]
-    @letter_5 = params[:letter_5]
-    @letter_6 = params[:letter_6]
-    @letter_7 = params[:letter_7]
 
-    redirect '/show'
+    @board = Board.create(
+      letter_1: get_letter(params[:letter_1]), 
+      letter_2: get_letter(params[:letter_2]),
+      letter_3: get_letter(params[:letter_3]),
+      letter_4: get_letter(params[:letter_4]),
+      letter_5: get_letter(params[:letter_5]),
+      letter_6: get_letter(params[:letter_6]),
+      letter_7: get_letter(params[:letter_7]))
+
+    redirect "/show/#{@board.id}"
   end
 
-
-
   # GET: /boards/5
-  get "/:id" do
+  get "/show/:id" do
+    @board = Board.find(params[:id])
+
     erb :"/show.html"
   end
 
@@ -51,5 +52,17 @@ class ApplicationController < Sinatra::Base
   delete "/:id/delete" do
     redirect "/boards"
   end
- 
+
+  private
+
+  def get_letter(type)
+    consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "w", "y", "z"]
+    vowels = ["a", "e", "i", "o", "u"]
+    if type == "consonant"
+      return consonants.sample
+    else 
+      return vowels.sample
+    end
+  end
+
 end
