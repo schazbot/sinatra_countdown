@@ -6,6 +6,7 @@ class ApplicationController < Sinatra::Base
     set :views, "app/views"
   end
 
+
   # GET: /boards
   get "/boards" do
     erb :"/index.html"
@@ -38,15 +39,7 @@ class ApplicationController < Sinatra::Base
     erb :"/show.html"
   end
 
-  # GET: /boards/5/edit
-  get "/:id/edit" do
-    erb :"/edit.html"
-  end
 
-  # PATCH: /boards/5
-  patch "/:id" do
-    redirect "/boards/:id"
-  end
 
   # DELETE: /boards/5/delete
   delete "/:id/delete" do
