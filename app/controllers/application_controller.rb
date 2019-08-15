@@ -6,7 +6,6 @@ class ApplicationController < Sinatra::Base
     set :views, "app/views"
   end
 
-
   # GET: /boards
   get "/boards" do
     erb :"/index.html"
@@ -21,7 +20,7 @@ class ApplicationController < Sinatra::Base
     puts params
 
     @board = Board.create(
-      letter_1: get_letter(params[:letter_1]), 
+      letter_1: get_letter(params[:letter_1]),
       letter_2: get_letter(params[:letter_2]),
       letter_3: get_letter(params[:letter_3]),
       letter_4: get_letter(params[:letter_4]),
@@ -29,8 +28,9 @@ class ApplicationController < Sinatra::Base
       letter_6: get_letter(params[:letter_6]),
       letter_7: get_letter(params[:letter_7]),
       letter_8: get_letter(params[:letter_8]),
-      letter_9: get_letter(params[:letter_9]))
-      
+      letter_9: get_letter(params[:letter_9]),
+    )
+
     redirect "/show/#{@board.id}"
   end
 
@@ -41,8 +41,6 @@ class ApplicationController < Sinatra::Base
     erb :"/show.html"
   end
 
-
-
   # DELETE: /boards/5/delete
   delete "/:id/delete" do
     redirect "/boards"
@@ -51,13 +49,12 @@ class ApplicationController < Sinatra::Base
   private
 
   def get_letter(type)
-    consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "w", "y", "z"]
-    vowels = ["a", "e", "i", "o", "u"]
+    consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+    vowels = ["A", "E", "I", "O", "U"]
     if type == "consonant"
       return consonants.sample
-    else 
+    else
       return vowels.sample
     end
   end
-
 end
