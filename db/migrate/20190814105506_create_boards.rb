@@ -8,6 +8,8 @@ class CreateBoards < ActiveRecord::Migration
       t.string :letter_5
       t.string :letter_6
       t.string :letter_7
+      t.string :letter_8
+      t.string :letter_9
       t.timestamps null: false
     end
   end

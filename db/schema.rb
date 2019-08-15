@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20190814105506) do
     t.string   "letter_5"
     t.string   "letter_6"
     t.string   "letter_7"
+    t.string   "letter_8"
+    t.string   "letter_9"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

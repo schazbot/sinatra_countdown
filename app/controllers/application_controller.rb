@@ -27,8 +27,10 @@ class ApplicationController < Sinatra::Base
       letter_4: get_letter(params[:letter_4]),
       letter_5: get_letter(params[:letter_5]),
       letter_6: get_letter(params[:letter_6]),
-      letter_7: get_letter(params[:letter_7]))
-
+      letter_7: get_letter(params[:letter_7]),
+      letter_8: get_letter(params[:letter_8]),
+      letter_9: get_letter(params[:letter_9]))
+      
     redirect "/show/#{@board.id}"
   end
 
